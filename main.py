@@ -7,7 +7,7 @@ def action_and_options_from_args(args):
     pass
 
 def main():
-    arg_parser = setup_arg_parser
+    arg_parser = setup_arg_parser()
     args = arg_parser.pars_args()
 
     action, options = action_and_options_from_args(args)
