@@ -1,14 +1,18 @@
-def fetch_lines_from_file(file):
-    pass
-
-def filter_lines(lines, country, year):
-    pass
-
-def format_output():
+def format_output(result_medals, total_medals):
     pass
 
 def medals(options):
-    lines = fetch_lines_from_file(options.file)
-    filtered = filter_lines(lines, options.country, options.year)
-    
-    return format_output(filtered)
+    result_medals = []
+    total_medals = {
+        'gold': 0,
+        'silver': 0,
+        'bronze': 0,
+    }
+
+    with open(options.file, 'r') as file:
+        line = file.readline()
+        while line:
+            process_line(line, result_medals, total_medals)            
+            line = file.readline()
+            
+    return format_output(result_medals, total_medals)
