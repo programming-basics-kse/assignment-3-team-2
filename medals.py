@@ -1,12 +1,11 @@
 from medal import Medal
+from medal import file_line_to_medal
 
 RESULT_MEDALS_CAP = 10
 
 def process_line(header, line, options, result_medals, total_medals): #modifies result_medals and total_medals
-    line = line.split('\t')
-    params = {header[i]: line[i] for i in range(len(header))}
-    medal = Medal(params)
-    
+    medal = file_line_to_medal(header, line)   
+ 
     if options.country in [medal.get_noc(), medal.get_country()] and medal.get_year() == str(options.year):
         medal_type = medal.get_medal_type()
         if medal_type != 'NA':
