@@ -2,7 +2,7 @@ from medal import file_line_to_medal
 from medal import Medal
 
 def format_output(result) -> str:
-    pass
+    return '\n'.join([f'{i}: Best year: {result[i][0]}, Won medals: {result[i][1]}' for i in result])
 
 def process(options):#options.countries = ['Ukraine', 'Romania']
     result = {} #country: [best_year, n_medals]
