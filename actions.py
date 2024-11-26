@@ -19,7 +19,7 @@ def format_output(result_medals, total_medals):
     output = ''
     for medal in result_medals:
         output += medal.display()
-    return f'{output}\nTotal gold: {total_medals['gold']}\nTotal silver: {total_medals['silver']}\nTotal bronze: {total_medals['bronze']}'
+    return f'{output}\nTotal gold: {total_medals["gold"]}\nTotal silver: {total_medals["silver"]}\nTotal bronze: {total_medals["bronze"]}'
 
 def medals(options):
     result_medals = []
@@ -33,11 +33,8 @@ def medals(options):
         line = file.readline()
         header = [i.lower() for i in line.replace('\n', '').split('\t')]
 
-        line = file.readline()
-        line.replace('\n', '')
+        line = file.readline().replace('\n', '')
         while line:
             process_line(header, line, options, result_medals, total_medals)
             line = file.readline().replace('\n', '')
-    print(result_medals)
-    print(total_medals)            
     return format_output(result_medals, total_medals)
