@@ -15,6 +15,9 @@ def setup_arg_parser():
     medals_parser = subparsers.add_parser('medals', help='Get first 10 medals and total stats')
     medals_parser.add_argument('country', type=str, help='Country name or NOC')
     medals_parser.add_argument('year', type=int, help='Year of the games')
+
+    total_parser = subparsers.add_parser('total', help='Get stats of every country that won at least one medal')
+    total_parser.add_argument('year', type=int, help='Year of the games')
     
     return parser
 
@@ -25,7 +28,10 @@ def action_and_options_from_args(args):
         options.country = args.country
         options.year = args.year
 
-        return args.action, options
+    elif args.action == 'total':
+        options.year = args.year
+    
+    return args.action, options
 
 def main():
     arg_parser = setup_arg_parser()
