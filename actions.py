@@ -7,7 +7,10 @@ def format_output(result_medals, total_medals):
     output = ''
     for medal in result_medals:
         output += medal.display()
-    return f'{output}, Total gold: {total_medals['gold']}, Total silver: {total_medals['silver']}, Total bronze: {total_medals['bronze']}'
+    return (f'{output}, '
+            f'\nTotal gold: {total_medals['gold']}, '
+            f'\nTotal silver: {total_medals['silver']}, '
+            f'\nTotal bronze: {total_medals['bronze']}')
 
 
 def medals(options):
