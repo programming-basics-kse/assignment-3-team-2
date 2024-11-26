@@ -17,5 +17,8 @@ class Medal:
     def get_name(self) -> str:
         return self.params['name']
 
-    def get_event(self):
+    def get_event(self) -> str:
         return self.params['event']
+
+    def get_year(self) -> str:
+        return self.params['year']

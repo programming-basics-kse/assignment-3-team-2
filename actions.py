@@ -8,7 +8,7 @@ def process_line(header, line, options, result_medals, total_medals): #modifies 
     params = {header[i]: line[i] for i in range(len(header))}
     medal = Medal(params)
     
-    if options.country in [medal.get_noc(), medal.get_country()]:
+    if options.country in [medal.get_noc(), medal.get_country()] and medal.get_year() == str(options.year):
         medal_type = medal.get_medal_type()
         if medal_type != 'NA':
             total_medals[medal_type.lower()] += 1
