@@ -35,3 +35,5 @@ def process(options) -> str :
                 countries[country].add_medal(medal)
             
             line = file.readline().replace('\n', '')
+
+    return format_output(countires)
