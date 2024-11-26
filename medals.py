@@ -1,5 +1,4 @@
-from medals import Medal
-
+from medal import Medal
 
 RESULT_MEDALS_CAP = 10
 
@@ -21,7 +20,7 @@ def format_output(result_medals, total_medals):
         output += medal.display()
     return f'{output}\nTotal gold: {total_medals["gold"]}\nTotal silver: {total_medals["silver"]}\nTotal bronze: {total_medals["bronze"]}'
 
-def medals(options):
+def process(options):
     result_medals = []
     total_medals = {
         'gold': 0,
