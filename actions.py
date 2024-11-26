@@ -5,4 +5,4 @@ def medals(options):
     return medals_action.process(options)
 
 def total(options):
-    return total_action.process(option)
+    return total_action.process(options)
