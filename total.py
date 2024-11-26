@@ -10,10 +10,13 @@ class CountryStats:
             'bronze': 0
         }
 
-    def add_medal(self, medal: Medal):#takes a medal, updates stats
+    def add_medal(self, medal: Medal):
         if medal.get_medal_type() == 'NA':
             return
         self.medals[medal.get_medal_type()] += 1
+
+def format_output(countries) -> str:
+    pass
 
 def process(options) -> str :
     countries = {}
@@ -25,9 +28,10 @@ def process(options) -> str :
         line = file.readline().replace('\n', '')
         while line:
             medal = file_line_to_medal(line)
-            country = medal.get_country()
-            if not country in countries:
-                countries[country] = CountryStats(country)
-            countries[country].add_medal(medal)
+            if medal.get_year() == options.year:  
+                country = medal.get_country()
+                if not country in countries:
+                    countries[country] = CountryStats(country)
+                countries[country].add_medal(medal)
             
             line = file.readline().replace('\n', '')
