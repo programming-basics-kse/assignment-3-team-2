@@ -3,7 +3,7 @@ class Medal:
         self.params = params
 
     def display(self) -> str:
-        return f'{self.get_name()} {self.get_event()} {self.get_medal_type()}'
+        return f'{self.get_name()} - {self.get_event()} - {self.get_medal_type()}\n'
 
     def get_country(self) -> str:
         return self.params['team']
