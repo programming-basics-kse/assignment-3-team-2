@@ -4,6 +4,7 @@ from medal import Medal
 class CountryStats:
     def __init__(self, country: str):
         self.country = country
+        self.total_medals = 0
         self.medals = {
             'gold': 0,
             'silver': 0,
@@ -14,9 +15,18 @@ class CountryStats:
         if medal.get_medal_type() == 'NA':
             return
         self.medals[medal.get_medal_type()] += 1
+        self.total_medals += 1
+
+    def display(self) -> str:
+        if self.total_medals == 0:
+            return ''
+        return f"{self.country} - G: {self.medals['gold']}, S: {self.medals['silver']}, B: {self.medals['bronze']}\n"
 
 def format_output(countries) -> str:
-    pass
+    output = ''
+    for country in countries:
+        output += country.display()
+    return output
 
 def process(options) -> str :
     countries = {}
