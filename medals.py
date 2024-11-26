@@ -28,11 +28,13 @@ def process(options):
     }
 
     with open(options.file, 'r') as file:
-        line = file.readline()
-        header = [i.lower() for i in line.replace('\n', '').split('\t')]
+        line = file.readline().replace('\n', '').split('\t')
+        header = [i.lower() for i in line]
 
         line = file.readline().replace('\n', '')
         while line:
             process_line(header, line, options, result_medals, total_medals)
             line = file.readline().replace('\n', '')
+
     return format_output(result_medals, total_medals)
+

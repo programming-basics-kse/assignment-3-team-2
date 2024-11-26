@@ -1,3 +1,4 @@
+from medal import file_line_to_medal
 from medal import Medal
 
 class CountryStats:
@@ -15,4 +16,18 @@ class CountryStats:
         self.medals[medal.get_medal_type()] += 1
 
 def process(options) -> str :
-    pass
+    countries = {}
+
+    with open(options.file, 'r') as file:
+        line = file.readline().replace('\n', '').split('\t')
+        header = [i.lower() for i in line]
+        
+        line = file.readline().replace('\n', '')
+        while line:
+            medal = file_line_to_medal(line)
+            country = medal.get_country()
+            if not country in countries:
+                countries[country] = CountryStats(country)
+            countries[country].add_medal(medal)
+            
+            line = file.readline().replace('\n', '')
