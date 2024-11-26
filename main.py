@@ -12,7 +12,7 @@ def setup_arg_parser():
     
     subparsers = parser.add_subparsers(dest='action', help='Action to perform')
 
-    medals_parser = subparsers.add_parser('medals', help='Get first 10 medal and total stats')
+    medals_parser = subparsers.add_parser('medals', help='Get first 10 medals and total stats')
     medals_parser.add_argument('country', type=str, help='Country name or NOC')
     medals_parser.add_argument('year', type=int, help='Year of the games')
     
