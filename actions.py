@@ -1,8 +1,14 @@
+from medals import Medal
+
 def process_line(line, result_medals, total_medals):
     pass
 
 def format_output(result_medals, total_medals):
-    pass
+    output = ''
+    for medal in result_medals:
+        output += medal.display()
+    return f'{output}\nTotal gold: {total_medals['gold']}\nTotal silver: {total_medals['silver']}\nTotal bronze: {total_medals['bronze']}'
+
 
 def medals(options):
     result_medals = []
