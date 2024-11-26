@@ -1,3 +1,6 @@
+def process_line(line, result_medals, total_medals):
+    pass
+
 def format_output(result_medals, total_medals):
     pass
 
