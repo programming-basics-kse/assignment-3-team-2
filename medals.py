@@ -1,6 +1,3 @@
-from sysconfig import get_path_names
-
-
 class Medal:
     def __init__(self, params):
         self.params = params
