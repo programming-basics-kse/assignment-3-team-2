@@ -23,6 +23,9 @@ class Medal:
     def get_year(self) -> str:
         return self.params['year']
 
+    def get_city(self) -> str:
+        return self.params['city']
+
 def file_line_to_medal(header, line): #modifies result_medals and total_medals
     line = line.split('\t')
     params = {header[i]: line[i] for i in range(len(header))}
