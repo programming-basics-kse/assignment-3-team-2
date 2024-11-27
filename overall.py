@@ -2,7 +2,7 @@ from medal import file_line_to_medal
 from medal import Medal
 
 def format_output(result) -> str:
-    return '\n'.join([f'{i}: Best year: {result[i][0]}, Won medals: {result[i][1]}' for i in result])
+    return '\n'.join([f'{i}: Best year: {result[i][0]}, Won medals: {result[i][1]}' if result[i][0] != None else f'The country {i} was not found in the dataset' for i in result])
 
 def process(options):#options.countries = ['Ukraine', 'Romania']
     result = {} #country: [best_year, n_medals]
