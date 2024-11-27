@@ -14,6 +14,8 @@ def process_line(header, line, options, result_medals, total_medals): #modifies 
                 result_medals.append(medal)
 
 def format_output(result_medals, total_medals):
+    if len(result_medals) == 0:
+        return 'There was no records of this country and this year in the dataset'
     output = ''
     for medal in result_medals:
         output += medal.display()
