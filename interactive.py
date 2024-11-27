@@ -8,21 +8,22 @@ class CountryStats:
         self.most_medals = {'year': None, 'total_medals': 0}
         self.least_medals = {'year': None, 'total_medals': 0}
         self.data = {
-            'year': {
-                'place': None,
-                'total_medals': 0,
-                'medals': {'gold': 0, 'silver': 0, 'bronze': 0}
-            }
+        #    'year': {
+        #        'city': None,
+        #        'total_medals': 0,
+        #        'medals': {'gold': 0, 'silver': 0, 'bronze': 0}
+        #    }
         }
 
     def add_medal(self, medal):
-        if medal.get_medal_type() == 'NA' or self.country != options.countries:
+        if medal.get_medal_type() == 'NA' or self.country not in [medal.get_country(), medal.get_noc()]:
             return
-        year = medal.get_year()
-        total_medals = self.data[year]['total_medals']
 
-        self.data[year]['medals'][medal.get_medal_type] += 1
-        total_medals += 1
+        year = medal.get_year()
+        total_medals = 
+        self.data[year]['medals'][medal.get_medal_type().lower()] += 1
+        self.data[year]['total_medals'] += 1
+        total_medals = self.data[year]['total_medals']
 
         if total_medals > self.most_medals['total_medals']:
             self.most_medals['total_medals'] = total_medals
@@ -35,23 +36,27 @@ class CountryStats:
         return f"Best games: {self.most_medals['year']} - {self.most_medals['total_medals']} medals\n"
 
     def get_worst_games(self) -> str:
-        return f"Worst games: {self.least_medals['year']} - {self.least_medals['total_medals']} medals\n
+        return f"Worst games: {self.least_medals['year']} - {self.least_medals['total_medals']} medals\n"
+
+    def get_average_medals_by_type(self, medal_type) -> str:
+        overall_years = len(self.data)
+        overall_medals = sum([self.data[year]['medals'][medal_type] for year in self.data])
+        return round(overall_medals / overall_years, 2)
 
     def get_average_medals(self) -> str:
-        overall_years = len(self.data)
-        overall_medals = sum(self.data[year]['total_medals'] for year in self.data)
-        average_medals = round(overall_medals / overall_years, 2)
-        return f'Average medals: {average_medals}\n'
-
+        output = ''
+        for i in ['gold', 'silver', 'bronze']:
+            output += f'Average {i} medals: {self.get_average_medals_by_type(i)}\n'
+        return output
 
     def get_first_participation(self) -> str:
         first_year = min(self.data.keys())
         return f"First participation: {first_year} {self.data['year']['place']}\n"
 
 def format_output(stats):
-    output = f'The first olympics participation: {stats.get_first_participation()\n}'
-    output += f'The best performance: {stats.get_best_games()}\n'
-    output += f'The worst performance: {stats.get_worst_games()}\n'
+    output = stats.get_first_participation()
+    output += stats.get_best_games()}
+    output += stats.get_worst_games()}
     output += stats.get_average_medals()
     
     return output
@@ -78,4 +83,7 @@ def process(options):
     while inp != q:
         result = process_country(inp, options)
         print(result, end='')
+        output += inp
         output += result
+
+    return output
