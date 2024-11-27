@@ -19,8 +19,8 @@ def setup_arg_parser():
     total_parser = subparsers.add_parser('total', help='Get stats of every country that won at least one medal')
     total_parser.add_argument('year', type=int, help='Year of the games')
 
-    total_parser = subparsers.add_parser('overall', help='Print the years input countries had the most medals')
-    total_parser.add_argument('countries', type=str, nargs='+', help='Countries to be analized')
+    overall_parser = subparsers.add_parser('overall', help='Print the years input countries had the most medals')
+    overall_parser.add_argument('countries', type=str, nargs='+', help='Countries to be analized')
     
     interactive_parser = subparsers.add_parser('interactive', help='Get country stats in interactive mode')
 
