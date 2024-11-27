@@ -8,6 +8,8 @@ def setup_arg_parser():
         description='This program fetches data from you dataset!'
     )
 
+    parser.add_argument('--output', type=Path, default=None, help='File to write output to')
+
     parser.add_argument('input_file', type=Path, help='Input file to process')
     
     subparsers = parser.add_subparsers(dest='action', help='Action to perform')
@@ -46,10 +48,14 @@ def main():
     action, options = action_and_options_from_args(args)
     action = getattr(actions, action)
 
-    output = action(options) 
-    print(output)
+    output = action(options)
+    if args.action != 'interactive': 
+        print(output)
 
-    #TODO: check if the -output arg is specified and save the output to a filie
+    if args.output != None:
+        with open(args.output, 'w') as file:
+            file.write(output)    
+
 
 if __name__ == '__main__':
     main()

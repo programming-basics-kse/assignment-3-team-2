@@ -91,7 +91,7 @@ def process(options):
         result = process_country(inp, options)
         result += '-' * 10 + '\n'
         print(result, end='')
-        output += inp
+        output += inp + '\n'
         output += result
         
         inp = input('(Country) ')
