@@ -26,6 +26,8 @@ def format_output(countries) -> str:
     output = ''
     for country in countries:
         output += countries[country].display()
+    if output == '':
+        return 'It appears there were no Olympics during the provided year. There were no records of anyone getting a medal that year'
     return output
 
 def process(options) -> str :

@@ -45,7 +45,7 @@ class CountryStats:
     def get_average_medals_by_type(self, medal_type) -> str:
         overall_years = len(self.data)
         overall_medals = sum([self.data[year]['medals'][medal_type] for year in self.data])
-        return round(overall_medals / overall_years, 2)
+        return int(overall_medals / overall_years)
 
     def get_average_medals(self) -> str:
         output = ''
